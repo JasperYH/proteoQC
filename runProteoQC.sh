@@ -65,7 +65,7 @@ if [ "$subcommand" = "report" ]; then
       # biocLite('proteoQC');}"
 
       #RUN
-      R -e "library('proteoQC');\
+      R -e "library(proteoQC);\
             design <- system.file('extdata/$spectralist-design.txt', package='proteoQC');\
             fas <- unzip('$fasta');\
             qcres <- msQCpipe(spectralist=design,fasta=fas,outdir ='$outdir',\
