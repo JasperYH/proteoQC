@@ -1,3 +1,5 @@
+#!/bin/bash
+
 outdir='./qc'
 mode='identification'
 miss=0
@@ -13,19 +15,19 @@ if [ "$subcommand" = "report" ]; then
   while true; do
     if [ "$1" = "-h" ]; then
         shift;
-        echo "\nUsage: proteoQC [module] -s [spectralist] -f [fasta] -[options] [values]\n";
-        echo "Options:\n"
-        echo "-s    A file contains the experiment design or a single mgf file"
-        echo "-f    Database file, must contain decoy sequences"
-        echo "-o    Output directory | default: ./result"
-        echo "-d    Identification or quantification | default: identification"
-        echo "-m    Max miss clevages | default: 0"
-        echo "-e    Enzyme | default: 1"
-        echo "-v    Variable modifications are those which may or may not be present | default: 2"
-        echo "-x    Fixed modifications are applied universally, to every instance of the specified residue(s) or terminus | default: 1"
-        echo "-t    The error window on experimental peptide mass values | default: 10"
-        echo "-i    Error window for MS/MS fragment ion mass values | default: 0.6"
-        echo "-c    Max number of cpu used | default: 2"
+        echo -e "\nUsage: proteoQC [module] -s [spectralist] -f [fasta] -[options] [values]\n";
+        echo -e "Options:\n"
+        echo -e "-s    A file contains the experiment design or a single mgf file"
+        echo -e "-f    Database file, must contain decoy sequences"
+        echo -e "-o    Output directory | default: ./result"
+        echo -e "-d    Identification or quantification | default: identification"
+        echo -e "-m    Max miss clevages | default: 0"
+        echo -e "-e    Enzyme | default: 1"
+        echo -e "-v    Variable modifications are those which may or may not be present | default: 2"
+        echo -e "-x    Fixed modifications are applied universally, to every instance of the specified residue(s) or terminus | default: 1"
+        echo -e "-t    The error window on experimental peptide mass values | default: 10"
+        echo -e "-i    Error window for MS/MS fragment ion mass values | default: 0.6"
+        echo -e "-c    Max number of cpu used | default: 2"
     else
       case $1 in
         -s  )
@@ -59,8 +61,8 @@ if [ "$subcommand" = "report" ]; then
       echo "$spectralist $fasta $miss"
 
       #INSTALL
-      R -e "if (!require('proteoQC')) {source('https://bioconductor.org/biocLite.R');\
-      biocLite('proteoQC');}"
+      # R -e "if (!require('proteoQC')) {source('https://bioconductor.org/biocLite.R');\
+      # biocLite('proteoQC');}"
 
       #RUN
       R -e "library('proteoQC');\
